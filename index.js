@@ -5,7 +5,10 @@ const routes = require("./routes/routes");
 require("dotenv").config();
 const mongoString = process.env.SAMPLE_AIRBNB_DATABASE_URL;
 
-mongoose.connect(mongoString);
+mongoose.connect(mongoString, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 const database = mongoose.connection;
 
 database.on("error", (err) => {
